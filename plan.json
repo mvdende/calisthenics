@@ -1,0 +1,374 @@
+{
+  "generated": "2026-09-09",
+  "days": [
+    {
+      "date": "2026-09-10",
+      "scheme": "Full body cardio",
+      "estimated_minutes": 15,
+      "warmup": [
+        {
+          "name": "Jumping Jacks",
+          "key": "CARDIO/JUMPING_JACKS",
+          "kind": "reps",
+          "target": 30,
+          "sets": 1
+        },
+        {
+          "name": "Walkout",
+          "key": "WARM_UP/WALKOUT",
+          "kind": "reps",
+          "target": 8,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Split Jacks",
+          "key": "CARDIO/SPLIT_JACKS",
+          "kind": "reps",
+          "target": 24,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Plank Pike Jumps",
+          "key": "PLANK/PLANK_PIKE_JUMPS",
+          "kind": "reps",
+          "target": 16,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Side Lunge",
+          "key": "LUNGE/SIDE_LUNGE",
+          "kind": "reps",
+          "target": 14,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Walking Lunge",
+          "key": "LUNGE/WALKING_LUNGE",
+          "kind": "reps",
+          "target": 16,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "scheme": "Full body",
+      "estimated_minutes": 13,
+      "warmup": [
+        {
+          "name": "Arm Circles",
+          "key": "WARM_UP/ARM_CIRCLES",
+          "kind": "time",
+          "target": 30,
+          "sets": 1
+        },
+        {
+          "name": "Walking High Knees",
+          "key": "WARM_UP/WALKING_HIGH_KNEES",
+          "kind": "time",
+          "target": 40,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Shoulder Tapping Push-up",
+          "key": "PUSH_UP/SHOULDER_TAPPING_PUSH_UP",
+          "kind": "reps",
+          "target": 10,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Wide-hands Push-up",
+          "key": "PUSH_UP/WIDE_HANDS_PUSH_UP",
+          "kind": "reps",
+          "target": 12,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Air Squat",
+          "key": "SQUAT/AIR_SQUAT",
+          "kind": "reps",
+          "target": 20,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Hip Raise",
+          "key": "HIP_RAISE/HIP_RAISE",
+          "kind": "reps",
+          "target": 15,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-12",
+      "scheme": "Upper + core",
+      "estimated_minutes": 15,
+      "warmup": [
+        {
+          "name": "Walking High Knees",
+          "key": "WARM_UP/WALKING_HIGH_KNEES",
+          "kind": "time",
+          "target": 40,
+          "sets": 1
+        },
+        {
+          "name": "Cat Camel",
+          "key": "WARM_UP/CAT_CAMEL",
+          "kind": "reps",
+          "target": 10,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Bench Dip",
+          "key": "TRICEPS_EXTENSION/BENCH_DIP",
+          "kind": "reps",
+          "target": 12,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Diamond Push-up",
+          "key": "PUSH_UP/DIAMOND_PUSH_UP",
+          "kind": "reps",
+          "target": 10,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "T Push-up",
+          "key": "PUSH_UP/T_PUSH_UP",
+          "kind": "reps",
+          "target": 10,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "V-up",
+          "key": "SIT_UP/V_UP",
+          "kind": "reps",
+          "target": 12,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Bear Crawl",
+          "key": "PLANK/BEAR_CRAWL",
+          "kind": "time",
+          "target": 30,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-13",
+      "scheme": "Lower + core",
+      "estimated_minutes": 12,
+      "warmup": [
+        {
+          "name": "Walking High Knees",
+          "key": "WARM_UP/WALKING_HIGH_KNEES",
+          "kind": "time",
+          "target": 40,
+          "sets": 1
+        },
+        {
+          "name": "Cat Camel",
+          "key": "WARM_UP/CAT_CAMEL",
+          "kind": "reps",
+          "target": 10,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Body-weight Wall Squat",
+          "key": "SQUAT/BODY_WEIGHT_WALL_SQUAT",
+          "kind": "time",
+          "target": 45,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Prisoner Squat",
+          "key": "SQUAT/PRISONER_SQUAT",
+          "kind": "reps",
+          "target": 16,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Calf Raise",
+          "key": "CALF_RAISE/",
+          "kind": "reps",
+          "target": 20,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "scheme": "Core + cardio",
+      "estimated_minutes": 11,
+      "warmup": [
+        {
+          "name": "Cat Camel",
+          "key": "WARM_UP/CAT_CAMEL",
+          "kind": "reps",
+          "target": 10,
+          "sets": 1
+        },
+        {
+          "name": "Jumping Jacks",
+          "key": "CARDIO/JUMPING_JACKS",
+          "kind": "reps",
+          "target": 30,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Flutter Kicks",
+          "key": "CRUNCH/FLUTTER_KICKS",
+          "kind": "time",
+          "target": 40,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Leg Raise",
+          "key": "LEG_RAISE/",
+          "kind": "reps",
+          "target": 14,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Superman from Floor",
+          "key": "HYPEREXTENSION/SUPERMAN_FROM_FLOOR",
+          "kind": "reps",
+          "target": 14,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "scheme": "Full body cardio",
+      "estimated_minutes": 13,
+      "warmup": [
+        {
+          "name": "Walking High Knees",
+          "key": "WARM_UP/WALKING_HIGH_KNEES",
+          "kind": "time",
+          "target": 40,
+          "sets": 1
+        },
+        {
+          "name": "Walkout",
+          "key": "WARM_UP/WALKOUT",
+          "kind": "reps",
+          "target": 8,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Plank Pike Jumps",
+          "key": "PLANK/PLANK_PIKE_JUMPS",
+          "kind": "reps",
+          "target": 16,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Jumping Jacks",
+          "key": "CARDIO/JUMPING_JACKS",
+          "kind": "reps",
+          "target": 40,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Squat Jumps In N' Out",
+          "key": "SQUAT/SQUAT_JUMPS_IN_N_OUT",
+          "kind": "reps",
+          "target": 12,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "scheme": "Full body",
+      "estimated_minutes": 14,
+      "warmup": [
+        {
+          "name": "Jumping Jacks",
+          "key": "CARDIO/JUMPING_JACKS",
+          "kind": "reps",
+          "target": 30,
+          "sets": 1
+        },
+        {
+          "name": "Arm Circles",
+          "key": "WARM_UP/ARM_CIRCLES",
+          "kind": "time",
+          "target": 30,
+          "sets": 1
+        }
+      ],
+      "exercises": [
+        {
+          "name": "Push-up",
+          "key": "PUSH_UP/PUSH_UP",
+          "kind": "reps",
+          "target": 12,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Pike Push-up",
+          "key": "PUSH_UP/PIKE_PUSH_UP",
+          "kind": "reps",
+          "target": 10,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Air Squat",
+          "key": "SQUAT/AIR_SQUAT",
+          "kind": "reps",
+          "target": 20,
+          "sets": 3,
+          "rest": 30
+        },
+        {
+          "name": "Body-weight Wall Squat",
+          "key": "SQUAT/BODY_WEIGHT_WALL_SQUAT",
+          "kind": "time",
+          "target": 45,
+          "sets": 3,
+          "rest": 30
+        }
+      ]
+    }
+  ]
+}

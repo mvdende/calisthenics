@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calisthenics — begeleider</title>
+<meta name="description" content="De workout van vandaag: uitleg en animatie per oefening, naast je Garmin.">
+<meta name="theme-color" content="#E8EBEE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101820" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Calisthenics">
+<link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIkNhbGlzdGhlbmljcyBCZWdlbGVpZGVyIiwKICAic2hvcnRfbmFtZSI6ICJDYWxpc3RoZW5pY3MiLAogICJkZXNjcmlwdGlvbiI6ICJEYWdlbGlqa3NlIGJvZHl3ZWlnaHQgd29ya291dCwgbWV0IHVpdGxlZyBlbiBhbmltYXRpZSBwZXIgb2VmZW5pbmcuIiwKICAic3RhcnRfdXJsIjogIi4vd29ya291dC5odG1sIiwKICAic2NvcGUiOiAiLi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNFOEVCRUUiLAogICJ0aGVtZV9jb2xvciI6ICIjRThFQkVFIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJsYW5nIjogIm5sIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyUzRSUzQ3JlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIHJ4PScyMCcgZmlsbD0nJTIzMEY2RTYzJy8lM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nMjgnIHI9JzEyJyBmaWxsPSclMjNGRkZGRkYnLyUzRSUzQ3BhdGggZD0nTTUwIDQyIEw1MCA2NCBNMzYgNTIgTDY0IDUyIE01MCA2NCBMMzYgODggTTUwIDY0IEw2NCA4OCcgc3Ryb2tlPSclMjNGRkZGRkYnIHN0cm9rZS13aWR0aD0nOScgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBmaWxsPSdub25lJy8lM0UlM0Mvc3ZnJTNFIiwKICAgICAgInNpemVzIjogImFueSIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLAogICAgICAicHVycG9zZSI6ICJhbnkiCiAgICB9CiAgXQp9Cg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E8EBEE; --card:#FFFFFF; --ink:#141C24; --ink-soft:#4C5967;
+    --ink-faint:#8A96A3; --rule:#D2D8DE; --accent:#0F6E63;
+    --g-warmup:#7A6BB5; --g-push:#C0562F; --g-legs:#1F6FA8; --g-core:#0F6E63; --g-cardio:#A8482E;
+    --focus:#0F6E63; --accent-ink:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820; --card:#18222C; --ink:#E7ECF1; --ink-soft:#A6B3C0;
+      --ink-faint:#6D7C8A; --rule:#26333F; --accent:#4FC8B6;
+      --g-warmup:#A99BE0; --g-push:#E8845A; --g-legs:#5DAEE0; --g-core:#4FC8B6; --g-cardio:#E08A6E;
+      --focus:#4FC8B6; --accent-ink:#0A1410;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820; --card:#18222C; --ink:#E7ECF1; --ink-soft:#A6B3C0;
+    --ink-faint:#6D7C8A; --rule:#26333F; --accent:#4FC8B6;
+    --g-warmup:#A99BE0; --g-push:#E8845A; --g-legs:#5DAEE0; --g-core:#4FC8B6; --g-cardio:#E08A6E;
+    --focus:#4FC8B6; --accent-ink:#0A1410;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px; line-height:1.5;
+  }
+  h1,h2,h3{font-family:"Barlow Semi Condensed",system-ui,sans-serif;font-weight:600;margin:0}
+  button{font:inherit;color:inherit}
+  button:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+  [hidden]{display:none !important}
+  .wrap{max-width:32rem;margin:0 auto;padding:1.5rem 1.1rem 6.5rem}
+
+  /* ---------- overview ---------- */
+  .app-header h1{font-size:clamp(1.8rem,7vw,2.3rem);letter-spacing:-.01em;margin-bottom:.35rem}
+  .app-header .tagline{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:30rem}
+
+  .fallback-banner{
+    margin-top:1.2rem; padding:.75rem .9rem; border-radius:.4rem;
+    background:var(--card); border:1px solid var(--g-cardio); color:var(--ink-soft); font-size:.9rem;
+  }
+  .fallback-banner p{margin:0}
+  .fallback-banner strong{color:var(--ink)}
+  .fallback-banner code{background:var(--paper);padding:.1rem .3rem;border-radius:.25rem;font-size:.85em}
+
+  .day-picker{display:flex;gap:.5rem;overflow-x:auto;margin:1.4rem 0 0;padding-bottom:.2rem;-webkit-overflow-scrolling:touch}
+  .day-chip{
+    flex:none; font:inherit; font-size:.92rem; cursor:pointer; text-align:left;
+    padding:.5rem .8rem; border-radius:.5rem; background:var(--card);
+    border:1px solid var(--rule); color:var(--ink-soft); line-height:1.25;
+  }
+  .day-chip strong{display:block;color:var(--ink);font-family:"Barlow Semi Condensed",sans-serif;font-weight:600;font-size:1.05rem}
+  .day-chip[aria-pressed="true"]{border-color:var(--accent);border-width:2px;color:var(--ink)}
+
+  .scheme-block{margin-top:1.6rem}
+  .scheme-block h2{font-size:1.5rem}
+  .scheme-meta{margin:.2rem 0 0;color:var(--ink-faint);font-size:.92rem}
+
+  .group-heading{margin:1.6rem 0 .6rem;font-size:1.05rem;color:var(--ink-soft);font-family:"Barlow Semi Condensed",sans-serif;font-weight:600}
+  ul.card-list{list-style:none;margin:0;padding:0}
+  .ex-card{
+    display:flex; justify-content:space-between; align-items:center; gap:.8rem;
+    background:var(--card); border-left:3px solid var(--dot,var(--rule));
+    padding:.75rem .9rem; margin-bottom:.45rem; border-radius:0 .35rem .35rem 0;
+  }
+  .ex-card .ex-name{font-family:"Barlow Semi Condensed",sans-serif;font-weight:600;font-size:1.05rem;margin:0}
+  .ex-card .ex-group{margin:.1rem 0 0;color:var(--ink-faint);font-size:.85rem}
+  .ex-card .ex-goal{flex:none;font-variant-numeric:tabular-nums;font-size:1.05rem;color:var(--ink-soft);font-family:"Barlow Semi Condensed",sans-serif;font-weight:600}
+
+  .start-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:10;
+    padding:.9rem 1.1rem calc(.9rem + env(safe-area-inset-bottom));
+    background:linear-gradient(to top, var(--paper) 60%, transparent);
+  }
+  .start-bar .wrap-inner{max-width:32rem;margin:0 auto}
+
+  .cta{
+    display:block; width:100%; padding:.95rem 1rem; text-align:center;
+    background:var(--accent); color:var(--accent-ink); border:none; border-radius:.5rem;
+    font-family:"Barlow Semi Condensed",sans-serif; font-weight:600; font-size:1.15rem; cursor:pointer;
+  }
+  .cta:disabled{opacity:.5}
+
+  footer.note{margin-top:2.4rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--ink-faint);font-size:.85rem}
+
+  /* ---------- overlay (resume prompt) ---------- */
+  .overlay{
+    position:fixed; inset:0; z-index:30; background:rgba(10,14,18,.55);
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  @media (min-width:32rem){ .overlay{align-items:center} }
+  .overlay-card{
+    width:100%; max-width:26rem; background:var(--card); color:var(--ink);
+    border-radius:.6rem .6rem 0 0; padding:1.4rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom));
+  }
+  @media (min-width:32rem){ .overlay-card{border-radius:.6rem} }
+  .overlay-card h2{font-size:1.3rem;margin-bottom:.5rem}
+  .overlay-card p{color:var(--ink-soft);margin:0 0 1.1rem}
+  .overlay-actions{display:flex;flex-direction:column;gap:.6rem}
+  .btn-plain{
+    padding:.8rem 1rem; border-radius:.5rem; border:1px solid var(--rule);
+    background:transparent; color:var(--ink); font-size:1rem; cursor:pointer;
+  }
+
+  /* ---------- guided mode ---------- */
+  #view-guided{max-width:32rem;margin:0 auto;padding:0 1.1rem 1.2rem;min-height:100dvh;display:flex;flex-direction:column}
+  .guided-head{position:sticky;top:0;background:var(--paper);padding-top:.9rem;padding-bottom:.6rem;z-index:5}
+  .guided-head-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+  #btn-exit{
+    flex:none; width:2.3rem; height:2.3rem; border-radius:50%; border:1px solid var(--rule);
+    background:var(--card); color:var(--ink-soft); font-size:1.2rem; line-height:1; cursor:pointer;
+  }
+  .progress-track{flex:1;height:.4rem;background:var(--rule);border-radius:1rem;overflow:hidden}
+  .progress-fill{height:100%;background:var(--accent);border-radius:1rem;transition:width .25s ease}
+
+  #stage, #rest-stage{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:flex-start;padding-top:.4rem}
+  .stickfig{width:min(72vw,300px);height:auto;display:block;margin:0 auto}
+  .stickfig .b{fill:none;stroke:var(--ink-soft);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+  .stickfig .h{fill:var(--card);stroke:var(--ink-soft);stroke-width:9}
+  .stickfig .a{stroke:var(--accent)}
+  .stickfig .g{stroke:var(--rule);stroke-width:5;stroke-linecap:round}
+
+  #ex-name{font-size:clamp(1.5rem,7vw,2rem);margin-top:.6rem}
+  #ex-desc{color:var(--ink-soft);margin:.5rem 0 0;max-width:26rem;font-size:.98rem}
+  .goal-line{margin:.9rem 0 0;font-size:1.05rem;color:var(--ink)}
+  .goal-line b{font-family:"Barlow Semi Condensed",sans-serif;font-weight:600}
+
+  .clock{
+    font-family:"Barlow Semi Condensed",sans-serif; font-weight:600;
+    font-variant-numeric:tabular-nums; font-size:clamp(4.5rem,26vw,8.5rem);
+    line-height:1; letter-spacing:-.01em; margin:.6rem 0;
+  }
+  .rest-label{margin:.4rem 0 0;color:var(--ink-faint);font-size:1rem}
+  #rest-next{color:var(--ink-soft);font-size:1.05rem;margin:.2rem 0 0}
+  #rest-next b{color:var(--ink);font-family:"Barlow Semi Condensed",sans-serif;font-weight:600}
+
+  #btn-set-done{margin-top:1.2rem;max-width:22rem}
+
+  .controls-row{display:flex;gap:.6rem;margin-top:1.4rem;padding-bottom:calc(.6rem + env(safe-area-inset-bottom))}
+  .controls-row button{
+    flex:1; padding:.75rem .4rem; border-radius:.5rem; border:1px solid var(--rule);
+    background:var(--card); color:var(--ink-soft); font-size:.95rem; cursor:pointer;
+  }
+  .controls-row button:disabled{opacity:.4}
+  .controls-row button[aria-pressed="true"]{border-color:var(--accent);color:var(--ink)}
+
+  .hint{margin-top:.8rem;color:var(--ink-faint);font-size:.82rem}
+
+  /* ---------- finish ---------- */
+  #view-finish{max-width:32rem;margin:0 auto;padding:2rem 1.1rem 3rem}
+  #view-finish h1{font-size:2rem}
+  #finish-time{color:var(--ink-soft);font-size:1.1rem;margin:.3rem 0 1.5rem}
+  #finish-list{list-style:none;margin:0 0 1.6rem;padding:0}
+  #finish-list li{
+    display:flex;justify-content:space-between;background:var(--card);
+    border-left:3px solid var(--accent);padding:.65rem .85rem;margin-bottom:.35rem;
+    border-radius:0 .35rem .35rem 0;font-size:.98rem;
+  }
+  #finish-list span:last-child{color:var(--ink-faint)}
+
+  /* ---------- animation keyframes (shared per family) ---------- */
+  .fig-squat, .fig-jump{transform-origin:80px 192px}
+  .fig-lunge{transform-origin:90px 192px}
+  .fig-pushup, .fig-plank{transform-origin:150px 138px}
+  .fig-crunch{transform-origin:155px 140px}
+
+  @media (prefers-reduced-motion: no-preference){
+    .fig-squat{animation:squat-cycle 2s ease-in-out infinite}
+    .fig-lunge{animation:lunge-cycle 2s ease-in-out infinite}
+    .fig-pushup{animation:pushup-cycle 2s ease-in-out infinite}
+    .fig-plank{animation:plank-cycle 2s ease-in-out infinite}
+    .fig-crunch{animation:crunch-cycle 2s ease-in-out infinite}
+    .fig-jump{animation:jump-cycle 2s ease-in-out infinite}
+  }
+  @keyframes squat-cycle{0%,100%{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(1.32) scaleX(.96) translateY(-4px)}}
+  @keyframes lunge-cycle{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.22) translateY(-3px)}}
+  @keyframes pushup-cycle{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+  @keyframes plank-cycle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @keyframes crunch-cycle{0%,100%{transform:rotate(0deg)}50%{transform:rotate(18deg)}}
+  @keyframes jump-cycle{0%,100%{transform:translateY(0)}50%{transform:translateY(30px)}}
+</style>
+</head>
+<body>
+
+<div id="view-overview" class="wrap">
+  <header class="app-header">
+    <h1>Calisthenics</h1>
+    <p class="tagline">De workout van vandaag. Jij bepaalt het tempo — er is geen verbinding met je horloge, dit toont alleen hetzelfde plan.</p>
+  </header>
+
+  <div class="fallback-banner" id="fallback-banner" hidden>
+    <p><strong>Dit is voorbeelddata, niet je eigen plan.json.</strong> plan.json kon niet geladen worden — waarschijnlijk omdat deze pagina rechtstreeks als bestand is geopend. Draai in deze map <code>python3 -m http.server</code> en open dan <code>http://localhost:8000/workout.html</code>.</p>
+  </div>
+
+  <div class="day-picker" id="day-picker" role="group" aria-label="Kies een dag"></div>
+
+  <section class="scheme-block">
+    <h2 id="scheme-name"></h2>
+    <p class="scheme-meta" id="scheme-meta"></p>
+  </section>
+
+  <div id="warmup-block" hidden>
+    <h3 class="group-heading">Warming-up</h3>
+    <ul class="card-list" id="warmup-list"></ul>
+  </div>
+
+  <h3 class="group-heading">Oefeningen</h3>
+  <ul class="card-list" id="exercise-list"></ul>
+
+  <footer class="note">Namen in het Engels, zoals op je horloge. Open deze pagina via een lokale server (niet door het bestand te dubbelklikken), dan werkt hij ook offline zodra hij één keer geladen is.</footer>
+</div>
+
+<div class="start-bar">
+  <div class="wrap-inner">
+    <button id="btn-start" class="cta">Start workout</button>
+  </div>
+</div>
+
+<div id="view-guided" hidden>
+  <div class="guided-head">
+    <div class="guided-head-row">
+      <button id="btn-exit" aria-label="Terug naar overzicht" type="button">×</button>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+
+  <div id="stage">
+    <div id="anim-holder"></div>
+    <h2 id="ex-name"></h2>
+    <p id="ex-desc"></p>
+    <p class="goal-line"><b id="goal-text"></b> · <span id="set-counter"></span></p>
+    <div id="clock" class="clock" hidden></div>
+    <button id="btn-set-done" class="cta" hidden type="button">Set klaar</button>
+  </div>
+
+  <div id="rest-stage" hidden>
+    <p class="rest-label">Rust</p>
+    <div id="rest-clock" class="clock"></div>
+    <p id="rest-next"></p>
+  </div>
+
+  <div class="controls-row">
+    <button id="btn-back" type="button">Terug</button>
+    <button id="btn-pause" type="button" aria-pressed="false">Pauze</button>
+    <button id="btn-skip" type="button">Overslaan</button>
+  </div>
+  <p class="hint" id="wakelock-hint" hidden>Kon het scherm niet actief houden op dit toestel. Zet je eigen schermtimeout hoger voor deze sessie.</p>
+</div>
+
+<div id="view-finish" hidden>
+  <h1>Workout afgerond</h1>
+  <p id="finish-time"></p>
+  <ul id="finish-list"></ul>
+  <button id="btn-finish-ok" class="cta" type="button">Terug naar overzicht</button>
+</div>
+
+<div id="resume-overlay" class="overlay" hidden>
+  <div class="overlay-card">
+    <h2>Niet-afgeronde sessie</h2>
+    <p id="resume-text"></p>
+    <div class="overlay-actions">
+      <button id="btn-resume" class="cta" type="button">Doorgaan</button>
+      <button id="btn-restart" class="btn-plain" type="button">Opnieuw beginnen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   Data: Nederlandse uitleg + spiergroep + animatiefamilie per key.
+   ============================================================ */
+const EXINFO = {
+ "WARM_UP/WALKING_HIGH_KNEES": {g:"warmup", fam:"jump", d:"Loop op de plaats en trek je knieën beurtelings tot heuphoogte op. Armen bewegen tegengesteld mee, landing zacht op de voorvoet."},
+ "CARDIO/JUMPING_JACKS": {g:"warmup", fam:"jump", d:"Spring met je benen naar buiten terwijl je armen langs je oren omhoog gaan, en spring terug naar stand met armen langs je lichaam."},
+ "WARM_UP/ARM_CIRCLES": {g:"warmup", fam:"jump", d:"Armen gestrekt zijwaarts, draai rustige cirkels die steeds groter worden. Halverwege draai je de richting om."},
+ "WARM_UP/WALKOUT": {g:"warmup", fam:"plank", d:"Buig vanuit staand voorover tot je handen de grond raken, loop met je handen vooruit naar plank en weer terug. Benen blijven zo gestrekt mogelijk."},
+ "WARM_UP/CAT_CAMEL": {g:"warmup", fam:"plank", d:"Op handen en knieën. Duw je rug bol omhoog en laat hem daarna hol zakken, in een rustig ritme op je ademhaling."},
+ "WARM_UP/GROINERS": {g:"warmup", fam:"plank", d:"Vanuit plank stap je één voet naast je hand en laat je je heup laag zakken. Terug naar plank en wissel van been."},
+
+ "PUSH_UP/PUSH_UP": {g:"push", fam:"pushup", d:"Handen iets breder dan je schouders, lichaam in één rechte lijn van hoofd tot hielen. Zak tot je borst vlak boven de grond is en duw terug."},
+ "PUSH_UP/WIDE_HANDS_PUSH_UP": {g:"push", fam:"pushup", d:"Dezelfde beweging met je handen duidelijk breder dan schouderbreedte. Dat legt meer nadruk op je borst en minder op je triceps."},
+ "PUSH_UP/DIAMOND_PUSH_UP": {g:"push", fam:"pushup", d:"Handen onder je borst met duimen en wijsvingers tegen elkaar, zodat er een ruit ontstaat. Ellebogen blijven dicht langs je lichaam. Zwaar op de triceps."},
+ "PUSH_UP/INCLINE_PUSH_UP": {g:"push", fam:"pushup", d:"Handen op een verhoging zoals een bank, tafelrand of trede. Hoe hoger de verhoging, hoe lichter de oefening."},
+ "PUSH_UP/PIKE_PUSH_UP": {g:"push", fam:"pushup", d:"Vanuit plank je heupen hoog optrekken tot een omgekeerde V. Zak met je kruin richting de grond en duw terug. Traint vooral je schouders."},
+ "PUSH_UP/SHOULDER_TAPPING_PUSH_UP": {g:"push", fam:"pushup", d:"Na elke push-up tik je met je hand je tegenoverliggende schouder aan. Je heupen mogen daarbij niet meedraaien."},
+ "PUSH_UP/SPIDERMAN_PUSH_UP": {g:"push", fam:"pushup", d:"Terwijl je zakt trek je één knie zijwaarts naar je elleboog aan dezelfde kant. Bij het omhoog duwen zet je de voet weer terug."},
+ "PUSH_UP/HAND_RELEASE_PUSH_UP": {g:"push", fam:"pushup", d:"Zak helemaal tot de grond en til je handen even los. Daarna weer plaatsen en omhoog duwen. Geen zwaai, elke herhaling begint vanaf nul."},
+ "PUSH_UP/T_PUSH_UP": {g:"push", fam:"pushup", d:"Na elke push-up draai je door naar zijsteun met één arm recht omhoog, zodat je lichaam een T vormt. Afwisselend links en rechts."},
+ "TRICEPS_EXTENSION/BENCH_DIP": {g:"push", fam:"pushup", d:"Zit op de rand van een bank of stoel, handen naast je heupen, voeten vooruit. Laat je zakken door je ellebogen naar achteren te buigen en duw terug."},
+
+ "SQUAT/AIR_SQUAT": {g:"legs", fam:"squat", d:"De gewone squat zonder gewicht. Voeten schouderbreed, tenen licht naar buiten. Duw je heupen naar achteren en zak tot je dijen ongeveer horizontaal zijn. Borst omhoog, hielen op de grond."},
+ "SQUAT/PRISONER_SQUAT": {g:"legs", fam:"squat", d:"Dezelfde squat, maar met je handen achter je hoofd en je ellebogen wijd. Dwingt je romp rechtop te blijven."},
+ "SQUAT/SUMO_SQUAT": {g:"legs", fam:"squat", d:"Brede stand met je tenen duidelijk naar buiten. Zak recht omlaag tussen je voeten. Meer nadruk op je binnenbenen en bilspieren."},
+ "SQUAT/BODY_WEIGHT_WALL_SQUAT": {g:"legs", fam:"squat", d:"Rug plat tegen de muur, voeten een stap naar voren, zak tot je knieën in een hoek van 90 graden staan. Vasthouden, niet bewegen."},
+ "SQUAT/SQUAT_JUMPS_IN_N_OUT": {g:"legs", fam:"squat", d:"Blijf laag in de squat en spring je voeten afwisselend breed en smal. Je romp blijft op dezelfde hoogte."},
+ "LUNGE/LUNGE": {g:"legs", fam:"lunge", d:"Stap één been naar voren en laat je achterste knie richting de grond zakken tot beide knieën ongeveer 90 graden zijn. Duw terug naar stand en wissel."},
+ "LUNGE/WALKING_LUNGE": {g:"legs", fam:"lunge", d:"Dezelfde uitval, maar je loopt vooruit: uit de lunge stap je meteen door met het andere been."},
+ "LUNGE/SIDE_LUNGE": {g:"legs", fam:"lunge", d:"Stap ver zijwaarts, buig die knie en duw je heupen naar achteren terwijl het andere been gestrekt blijft. Beide voeten blijven recht vooruit wijzen."},
+ "LUNGE/CURTSY_LUNGE": {g:"legs", fam:"lunge", d:"Stap één been kruislings achter het andere, als een reverence, en zak omlaag. Traint de zijkant van je bil."},
+ "HIP_RAISE/HIP_RAISE": {g:"legs", fam:"crunch", d:"Op je rug, voeten plat en dicht bij je billen. Duw je heupen omhoog tot je knieën, heupen en schouders één lijn vormen. Knijp je billen aan bovenin."},
+ "HIP_RAISE/SINGLE_LEG_HIP_RAISE": {g:"legs", fam:"crunch", d:"Zelfde beweging op één voet, met het andere been gestrekt omhoog. Je heupen blijven horizontaal."},
+ "HIP_RAISE/MARCHING_HIP_RAISE": {g:"legs", fam:"crunch", d:"Houd je heupen omhoog in de bruggetjespositie en trek afwisselend één knie naar je borst, zonder te zakken of te kantelen."},
+ "CALF_RAISE/CALF_RAISE": {g:"legs", fam:"squat", d:"Kom staand zo hoog mogelijk op je tenen en laat je hielen daarna langzaam zakken. Op een tree kun je dieper uitzakken."},
+
+ "PLANK/PLANK": {g:"core", fam:"plank", d:"Steun op je onderarmen en tenen, ellebogen onder je schouders. Lichaam in één rechte lijn, buik en billen aangespannen, heupen niet laten zakken."},
+ "PLANK/SIDE_PLANK": {g:"core", fam:"plank", d:"Zijsteun op één onderarm en de zijkant van je voeten. Duw je heup omhoog tot je lichaam recht is en houd vast. Beide kanten doen."},
+ "PLANK/MOUNTAIN_CLIMBER": {g:"core", fam:"plank", d:"Vanuit hoge plank trek je je knieën snel en afwisselend naar je borst. Je schouders blijven boven je handen, je heupen laag."},
+ "PLANK/BEAR_CRAWL": {g:"core", fam:"plank", d:"Op handen en tenen met je knieën een paar centimeter boven de grond. Kruip kruislings vooruit: rechterhand met linkervoet mee."},
+ "PLANK/PLANK_WITH_KNEE_TO_ELBOW": {g:"core", fam:"plank", d:"Vanuit plank breng je één knie langs de buitenkant naar de elleboog aan dezelfde kant. Rustig terug en wisselen."},
+ "PLANK/PLANK_WITH_LEG_LIFT": {g:"core", fam:"plank", d:"Houd de plank vast en til om beurten één gestrekt been een handbreedte op. Je heupen mogen niet meedraaien."},
+ "PLANK/PLANK_PIKE_JUMPS": {g:"cardio", fam:"plank", d:"Vanuit hoge plank spring je beide voeten naar voren terwijl je heupen omhoog komen, en spring je weer terug naar plank."},
+ "CRUNCH/BICYCLE_CRUNCH": {g:"core", fam:"crunch", d:"Op je rug, handen bij je slapen. Breng je elleboog naar de tegenoverliggende knie terwijl het andere been strekt, en fiets rustig door."},
+ "CRUNCH/FLUTTER_KICKS": {g:"core", fam:"crunch", d:"Op je rug, benen gestrekt net boven de grond, onderrug tegen de mat. Maak kleine, snelle schaarbewegingen omhoog en omlaag."},
+ "CRUNCH/HOLLOW_ROCK": {g:"core", fam:"plank", d:"Op je rug, armen en benen gestrekt opgetild zodat je lichaam een ondiepe boot vormt. Schommel als geheel heen en weer zonder te knikken."},
+ "SIT_UP/SIT_UP": {g:"core", fam:"crunch", d:"Op je rug met gebogen knieën. Kom helemaal omhoog tot zit en laat je gecontroleerd terugzakken, wervel voor wervel."},
+ "SIT_UP/V_UP": {g:"core", fam:"crunch", d:"Vanuit gestrekt liggen breng je armen en benen tegelijk omhoog tot ze elkaar boven je heupen raken, zodat je lichaam een V vormt."},
+ "CORE/RUSSIAN_TWIST": {g:"core", fam:"crunch", d:"Zit met opgetrokken knieën en je romp achterover geleund. Draai je bovenlichaam afwisselend naar links en rechts. Voeten los is zwaarder."},
+ "LEG_RAISE/LEG_RAISE": {g:"core", fam:"crunch", d:"Op je rug met gestrekte benen. Til ze samen omhoog tot ongeveer loodrecht en laat ze langzaam zakken zonder de grond te raken."},
+ "HYPEREXTENSION/SUPERMAN_FROM_FLOOR": {g:"core", fam:"plank", d:"Op je buik, armen vooruit gestrekt. Til armen, borst en benen tegelijk een stukje op, houd kort vast en laat rustig zakken."},
+
+ "TOTAL_BODY/BURPEE": {g:"cardio", fam:"jump", d:"Vanuit staand handen op de grond, voeten naar achteren in plank, eventueel een push-up, voeten terug naar je handen en omhoog springen."},
+ "CARDIO/SQUAT_JACKS": {g:"cardio", fam:"squat", d:"Blijf laag in de squat en spring je voeten in en uit, terwijl je romp op dezelfde hoogte blijft."},
+ "CARDIO/SPLIT_JACKS": {g:"cardio", fam:"jump", d:"Springend wissel je van schaarstand: het ene been voor, het andere achter, armen tegengesteld mee."}
+};
+
+const GROUP_META = {
+  warmup:{label:"Warming-up", varName:"--g-warmup"},
+  push:{label:"Duwen", varName:"--g-push"},
+  legs:{label:"Benen", varName:"--g-legs"},
+  core:{label:"Romp", varName:"--g-core"},
+  cardio:{label:"Cardio", varName:"--g-cardio"}
+};
+
+/* Zes basisanimaties, gedeeld per familie van bewegingen (zie EXINFO.fam). */
+const FIGURES = {
+squat: `<svg class="stickfig" viewBox="0 0 160 200" aria-hidden="true">
+  <line class="g" x1="20" y1="192" x2="140" y2="192"/>
+  <g class="fig fig-squat">
+    <line class="b" x1="48" y1="190" x2="72" y2="190"/>
+    <line class="b" x1="88" y1="190" x2="112" y2="190"/>
+    <polyline class="b" points="80,128 55,150 60,190"/>
+    <polyline class="b" points="80,128 105,150 100,190"/>
+    <line class="b a" x1="80" y1="85" x2="80" y2="128"/>
+    <line class="b" x1="80" y1="95" x2="40" y2="105"/>
+    <line class="b" x1="80" y1="95" x2="120" y2="105"/>
+    <circle class="h" cx="80" cy="70" r="15"/>
+  </g>
+</svg>`,
+lunge: `<svg class="stickfig" viewBox="0 0 160 200" aria-hidden="true">
+  <line class="g" x1="20" y1="192" x2="140" y2="192"/>
+  <g class="fig fig-lunge">
+    <line class="b" x1="55" y1="190" x2="75" y2="190"/>
+    <line class="b" x1="125" y1="188" x2="145" y2="188"/>
+    <polyline class="b" points="85,118 60,140 65,190"/>
+    <polyline class="b" points="85,118 120,150 135,188"/>
+    <line class="b a" x1="90" y1="70" x2="85" y2="118"/>
+    <line class="b" x1="85" y1="80" x2="55" y2="95"/>
+    <line class="b" x1="85" y1="80" x2="115" y2="70"/>
+    <circle class="h" cx="90" cy="55" r="15"/>
+  </g>
+</svg>`,
+pushup: `<svg class="stickfig" viewBox="0 0 240 160" aria-hidden="true">
+  <line class="g" x1="20" y1="140" x2="220" y2="140"/>
+  <g class="fig fig-pushup">
+    <line class="b" x1="200" y1="138" x2="220" y2="138"/>
+    <line class="b" x1="210" y1="138" x2="150" y2="118"/>
+    <line class="b a" x1="150" y1="118" x2="90" y2="100"/>
+    <line class="b" x1="90" y1="100" x2="95" y2="138"/>
+    <line class="b" x1="85" y1="138" x2="105" y2="138"/>
+    <line class="b" x1="90" y1="100" x2="80" y2="94"/>
+    <circle class="h" cx="78" cy="92" r="14"/>
+  </g>
+</svg>`,
+plank: `<svg class="stickfig" viewBox="0 0 240 160" aria-hidden="true">
+  <line class="g" x1="20" y1="140" x2="220" y2="140"/>
+  <g class="fig fig-plank">
+    <line class="b" x1="205" y1="138" x2="222" y2="138"/>
+    <line class="b" x1="215" y1="138" x2="150" y2="112"/>
+    <line class="b a" x1="150" y1="112" x2="70" y2="100"/>
+    <line class="b" x1="70" y1="100" x2="75" y2="138"/>
+    <line class="b" x1="65" y1="138" x2="82" y2="138"/>
+    <circle class="h" cx="58" cy="94" r="14"/>
+  </g>
+</svg>`,
+crunch: `<svg class="stickfig" viewBox="0 0 240 160" aria-hidden="true">
+  <line class="g" x1="20" y1="140" x2="220" y2="140"/>
+  <polyline class="b" points="200,140 175,115 155,140"/>
+  <g class="fig fig-crunch">
+    <line class="b a" x1="155" y1="140" x2="100" y2="110"/>
+    <line class="b" x1="100" y1="112" x2="70" y2="95"/>
+    <circle class="h" cx="88" cy="104" r="14"/>
+  </g>
+</svg>`,
+jump: `<svg class="stickfig" viewBox="0 0 160 200" aria-hidden="true">
+  <line class="g" x1="20" y1="192" x2="140" y2="192"/>
+  <g class="fig fig-jump">
+    <line class="b" x1="45" y1="158" x2="55" y2="160"/>
+    <line class="b" x1="105" y1="160" x2="115" y2="158"/>
+    <line class="b" x1="80" y1="105" x2="55" y2="160"/>
+    <line class="b" x1="80" y1="105" x2="105" y2="160"/>
+    <line class="b a" x1="80" y1="60" x2="80" y2="105"/>
+    <line class="b" x1="80" y1="68" x2="45" y2="40"/>
+    <line class="b" x1="80" y1="68" x2="115" y2="40"/>
+    <circle class="h" cx="80" cy="45" r="15"/>
+  </g>
+</svg>`
+};
+
+/* ============================================================
+   Weekplan: laden uit plan.json (door garmin_calisthenics.py
+   geschreven), met ingebouwde voorbeelddata als terugval.
+   ============================================================ */
+const FALLBACK_PLAN = {
+  "generated": "2026-09-09",
+  "days": [
+    { "date": "2026-09-10", "scheme": "Full body cardio", "estimated_minutes": 12,
+      "warmup": [
+        {"name":"Groiners","key":"WARM_UP/GROINERS","kind":"reps","target":10,"sets":1},
+        {"name":"Walking High Knees","key":"WARM_UP/WALKING_HIGH_KNEES","kind":"time","target":40,"sets":1}
+      ],
+      "exercises": [
+        {"name":"Burpee","key":"TOTAL_BODY/BURPEE","kind":"reps","target":12,"sets":3,"rest":30},
+        {"name":"Split Jacks","key":"CARDIO/SPLIT_JACKS","kind":"reps","target":24,"sets":3,"rest":30},
+        {"name":"Body-weight Wall Squat","key":"SQUAT/BODY_WEIGHT_WALL_SQUAT","kind":"time","target":45,"sets":3,"rest":30}
+      ]
+    },
+    { "date": "2026-09-11", "scheme": "Full body", "estimated_minutes": 12,
+      "warmup": [
+        {"name":"Groiners","key":"WARM_UP/GROINERS","kind":"reps","target":10,"sets":1},
+        {"name":"Walking High Knees","key":"WARM_UP/WALKING_HIGH_KNEES","kind":"time","target":40,"sets":1}
+      ],
+      "exercises": [
+        {"name":"T Push-up","key":"PUSH_UP/T_PUSH_UP","kind":"reps","target":10,"sets":3,"rest":30},
+        {"name":"Wide-hands Push-up","key":"PUSH_UP/WIDE_HANDS_PUSH_UP","kind":"reps","target":12,"sets":3,"rest":30},
+        {"name":"Single-leg Hip Raise","key":"HIP_RAISE/SINGLE_LEG_HIP_RAISE","kind":"reps","target":12,"sets":3,"rest":30},
+        {"name":"Side Lunge","key":"LUNGE/SIDE_LUNGE","kind":"reps","target":14,"sets":3,"rest":30}
+      ]
+    },
+    { "date": "2026-09-12", "scheme": "Upper + core", "estimated_minutes": 12,
+      "warmup": [
+        {"name":"Walking High Knees","key":"WARM_UP/WALKING_HIGH_KNEES","kind":"time","target":40,"sets":1},
+        {"name":"Groiners","key":"WARM_UP/GROINERS","kind":"reps","target":10,"sets":1}
+      ],
+      "exercises": [
+        {"name":"Pike Push-up","key":"PUSH_UP/PIKE_PUSH_UP","kind":"reps","target":10,"sets":3,"rest":30},
+        {"name":"Diamond Push-up","key":"PUSH_UP/DIAMOND_PUSH_UP","kind":"reps","target":10,"sets":3,"rest":30},
+        {"name":"Shoulder Tapping Push-up","key":"PUSH_UP/SHOULDER_TAPPING_PUSH_UP","kind":"reps","target":10,"sets":3,"rest":30},
+        {"name":"Sit-up","key":"SIT_UP/SIT_UP","kind":"reps","target":18,"sets":3,"rest":30}
+      ]
+    }
+  ]
+};
+
+const STORAGE_KEY = "calisthenics-session-v1";
+const WEEKDAYS = ["zo","ma","di","wo","do","vr","za"];
+
+let PLAN = null;
+let selectedDayIndex = 0;
+let session = null;       // actieve geleide sessie
+let tickHandle = null;
+let wakeLock = null;
+
+function parseLocalDate(s){
+  const [y,m,d] = s.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+function formatDayLabel(dateStr){
+  const dt = parseLocalDate(dateStr);
+  const dd = String(dt.getDate()).padStart(2,"0");
+  const mm = String(dt.getMonth() + 1).padStart(2,"0");
+  return {wd: WEEKDAYS[dt.getDay()], dm: `${dd}/${mm}`};
+}
+function goalText(ex){
+  return ex.kind === "time" ? `${ex.target}s` : `${ex.target}`;
+}
+function exInfo(key){
+  return EXINFO[key] || {g:"core", fam:"plank", d:"Geen uitleg beschikbaar voor deze oefening."};
+}
+function fmtClock(totalSeconds){
+  const s = Math.max(0, Math.ceil(totalSeconds));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${String(r).padStart(2,"0")}`;
+}
+
+/* ---------------- opslag: try/catch rond elke aanroep ---------------- */
+function safeGet(key){
+  try { return localStorage.getItem(key); } catch (e) { return null; }
+}
+function safeSet(key, val){
+  try { localStorage.setItem(key, val); } catch (e) { /* opslag niet beschikbaar: negeren */ }
+}
+function safeRemove(key){
+  try { localStorage.removeItem(key); } catch (e) { /* negeren */ }
+}
+
+/* ============================================================
+   Plan laden
+   ============================================================ */
+let usedFallbackPlan = false;
+
+async function loadPlan(){
+  if (location.protocol === "file:"){
+    // fetch() van een lokaal bestand wordt door de browser geblokkeerd
+    // wanneer deze pagina zelf ook via file:// is geopend (dubbelklikken).
+    // Geen enkele client-side truc omzeilt dit betrouwbaar — dus meteen
+    // de terugval gebruiken in plaats van een kansloze fetch te proberen.
+    usedFallbackPlan = true;
+    return FALLBACK_PLAN;
+  }
+  try {
+    const res = await fetch("./plan.json", {cache:"no-store"});
+    if (!res.ok) throw new Error("plan.json niet gevonden");
+    const data = await res.json();
+    if (!data || !Array.isArray(data.days) || data.days.length === 0) throw new Error("leeg plan");
+    return data;
+  } catch (e) {
+    console.warn("Kon plan.json niet laden, val terug op voorbeelddata:", e);
+    usedFallbackPlan = true;
+    return FALLBACK_PLAN;
+  }
+}
+
+/* ============================================================
+   Overzicht renderen
+   ============================================================ */
+function renderDayPicker(){
+  const box = document.getElementById("day-picker");
+  box.innerHTML = "";
+  PLAN.days.forEach((day, i) => {
+    const {wd, dm} = formatDayLabel(day.date);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "day-chip";
+    btn.setAttribute("aria-pressed", i === selectedDayIndex ? "true" : "false");
+    btn.innerHTML = `<strong>${wd}</strong>${dm}`;
+    btn.addEventListener("click", () => { selectedDayIndex = i; renderOverview(); });
+    box.appendChild(btn);
+  });
+}
+
+function exerciseCard(ex){
+  const info = exInfo(ex.key);
+  const meta = GROUP_META[info.g] || GROUP_META.core;
+  const li = document.createElement("li");
+  li.className = "ex-card";
+  li.style.setProperty("--dot", `var(${meta.varName})`);
+  li.innerHTML = `
+    <div>
+      <p class="ex-name">${ex.name}</p>
+      <p class="ex-group">${meta.label}</p>
+    </div>
+    <div class="ex-goal">${ex.sets} × ${goalText(ex)}</div>`;
+  return li;
+}
+
+function renderOverview(){
+  renderDayPicker();
+  const day = PLAN.days[selectedDayIndex];
+
+  document.getElementById("scheme-name").textContent = day.scheme;
+  document.getElementById("scheme-meta").textContent = `≈ ${day.estimated_minutes} min`;
+
+  const warmupBlock = document.getElementById("warmup-block");
+  const warmupList = document.getElementById("warmup-list");
+  warmupList.innerHTML = "";
+  if (day.warmup && day.warmup.length){
+    day.warmup.forEach(ex => warmupList.appendChild(exerciseCard(ex)));
+    warmupBlock.hidden = false;
+  } else {
+    warmupBlock.hidden = true;
+  }
+
+  const exList = document.getElementById("exercise-list");
+  exList.innerHTML = "";
+  day.exercises.forEach(ex => exList.appendChild(exerciseCard(ex)));
+}
+
+/* ============================================================
+   Sessie opbouwen: platte lijst van work/rest-stappen
+   ============================================================ */
+function buildSteps(day){
+  const all = [
+    ...(day.warmup || []).map(e => ({...e, isWarmup:true})),
+    ...day.exercises.map(e => ({...e, isWarmup:false}))
+  ];
+  const steps = [];
+  all.forEach((ex, exIdx) => {
+    const isLastExercise = exIdx === all.length - 1;
+    for (let s = 1; s <= ex.sets; s++){
+      steps.push({phase:"work", exercise:ex, setNumber:s});
+      const isLastSet = s === ex.sets;
+      if (ex.rest && !(isLastSet && isLastExercise)){
+        steps.push({phase:"rest", exercise:ex, setNumber:s, seconds:ex.rest});
+      }
+    }
+  });
+  // vind voor elke rust-stap de naam van de volgende oefening
+  for (let i = 0; i < steps.length; i++){
+    if (steps[i].phase === "rest"){
+      const next = steps.slice(i + 1).find(st => st.phase === "work");
+      steps[i].nextName = next ? next.exercise.name : null;
+    }
+  }
+  return steps;
+}
+
+function stepRemaining(step){
+  if (step.phase === "rest") return step.seconds;
+  if (step.exercise.kind === "time") return step.exercise.target;
+  return null; // reps: geen klok
+}
+
+/* ============================================================
+   Geleide modus
+   ============================================================ */
+function startGuided(resumeData){
+  const day = PLAN.days[selectedDayIndex];
+  const steps = buildSteps(day);
+
+  if (resumeData){
+    session = {
+      dayDate: day.date, steps,
+      currentIndex: Math.min(resumeData.currentIndex, steps.length - 1),
+      remaining: resumeData.remaining,
+      paused: resumeData.paused,
+      startedAt: resumeData.startedAt,
+      completedLog: resumeData.completedLog || []
+    };
+  } else {
+    session = {
+      dayDate: day.date, steps, currentIndex: 0,
+      remaining: stepRemaining(steps[0]),
+      paused: false, startedAt: Date.now(), completedLog: []
+    };
+  }
+
+  document.getElementById("view-overview").hidden = true;
+  document.querySelector(".start-bar").hidden = true;
+  document.getElementById("view-finish").hidden = true;
+  document.getElementById("view-guided").hidden = false;
+
+  requestWakeLock();
+  renderStep();
+  startTicker();
+  persistSession();
+}
+
+function currentStep(){ return session.steps[session.currentIndex]; }
+
+function renderStep(){
+  const step = currentStep();
+  const total = session.steps.length;
+  document.getElementById("progress-fill").style.width = `${Math.round((session.currentIndex / total) * 100)}%`;
+
+  const stage = document.getElementById("stage");
+  const restStage = document.getElementById("rest-stage");
+  const clock = document.getElementById("clock");
+  const setDoneBtn = document.getElementById("btn-set-done");
+
+  if (step.phase === "work"){
+    restStage.hidden = true;
+    stage.hidden = false;
+    const ex = step.exercise;
+    const info = exInfo(ex.key);
+    document.getElementById("anim-holder").innerHTML = FIGURES[info.fam] || FIGURES.plank;
+    document.getElementById("ex-name").textContent = ex.name;
+    document.getElementById("ex-desc").textContent = info.d;
+    document.getElementById("goal-text").textContent = `Doel: ${goalText(ex)}${ex.kind === "time" ? " sec" : " reps"}`;
+    document.getElementById("set-counter").textContent = `Set ${step.setNumber} van ${ex.sets}`;
+
+    if (ex.kind === "time"){
+      clock.hidden = false;
+      setDoneBtn.hidden = true;
+      clock.textContent = fmtClock(session.remaining);
+    } else {
+      clock.hidden = true;
+      setDoneBtn.hidden = false;
+    }
+  } else {
+    stage.hidden = true;
+    restStage.hidden = false;
+    document.getElementById("rest-clock").textContent = fmtClock(session.remaining);
+    document.getElementById("rest-next").innerHTML = step.nextName
+      ? `Hierna: <b>${step.nextName}</b>`
+      : `Laatste rust — bijna klaar.`;
+  }
+
+  document.getElementById("btn-back").disabled = session.currentIndex === 0;
+  document.getElementById("btn-pause").setAttribute("aria-pressed", session.paused ? "true" : "false");
+  document.getElementById("btn-pause").textContent = session.paused ? "Hervat" : "Pauze";
+}
+
+function startTicker(){
+  stopTicker();
+  tickHandle = setInterval(() => {
+    if (session.paused) return;
+    const step = currentStep();
+    if (step.phase === "rest" || (step.phase === "work" && step.exercise.kind === "time")){
+      session.remaining -= 1;
+      if (session.remaining <= 0){
+        advance(true);
+        return;
+      }
+      if (step.phase === "rest") document.getElementById("rest-clock").textContent = fmtClock(session.remaining);
+      else document.getElementById("clock").textContent = fmtClock(session.remaining);
+    }
+  }, 1000);
+}
+function stopTicker(){
+  if (tickHandle){ clearInterval(tickHandle); tickHandle = null; }
+}
+
+function logCompleted(step){
+  const ex = step.exercise;
+  session.completedLog.push({name: ex.name, sets: ex.sets, setNumber: step.setNumber});
+}
+
+function advance(natural){
+  const step = currentStep();
+  if (step.phase === "work" && natural) logCompleted(step);
+
+  session.currentIndex += 1;
+  if (session.currentIndex >= session.steps.length){
+    finishSession();
+    return;
+  }
+  session.remaining = stepRemaining(currentStep());
+  renderStep();
+  persistSession();
+}
+
+function goBack(){
+  if (session.currentIndex === 0) return;
+  session.currentIndex -= 1;
+  session.remaining = stepRemaining(currentStep());
+  renderStep();
+  persistSession();
+}
+
+function togglePause(){
+  session.paused = !session.paused;
+  renderStep();
+  persistSession();
+}
+
+function persistSession(){
+  safeSet(STORAGE_KEY, JSON.stringify({
+    date: session.dayDate,
+    currentIndex: session.currentIndex,
+    remaining: session.remaining,
+    paused: session.paused,
+    startedAt: session.startedAt,
+    completedLog: session.completedLog
+  }));
+}
+
+function finishSession(){
+  stopTicker();
+  releaseWakeLock();
+  safeRemove(STORAGE_KEY);
+
+  const elapsed = Math.round((Date.now() - session.startedAt) / 1000);
+  document.getElementById("finish-time").textContent = `Totale tijd: ${fmtClock(elapsed)}`;
+
+  const doneMap = new Map();
+  session.completedLog.forEach(item => {
+    const cur = doneMap.get(item.name) || {count:0, sets:item.sets};
+    cur.count += 1;
+    doneMap.set(item.name, cur);
+  });
+  const list = document.getElementById("finish-list");
+  list.innerHTML = "";
+  doneMap.forEach((v, name) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${name}</span><span>${v.count}/${v.sets} sets</span>`;
+    list.appendChild(li);
+  });
+  if (doneMap.size === 0){
+    const li = document.createElement("li");
+    li.innerHTML = `<span>Geen sets afgerond</span><span></span>`;
+    list.appendChild(li);
+  }
+
+  document.getElementById("view-guided").hidden = true;
+  document.getElementById("view-finish").hidden = false;
+  session = null;
+}
+
+function exitGuided(){
+  if (!confirm("Sessie afsluiten en terug naar het overzicht? Je voortgang blijft bewaard om later verder te gaan.")) return;
+  stopTicker();
+  releaseWakeLock();
+  document.getElementById("view-guided").hidden = true;
+  document.querySelector(".start-bar").hidden = false;
+  document.getElementById("view-overview").hidden = false;
+  session = null;
+}
+
+/* ============================================================
+   Hervatten na een onbedoeld gesloten tab
+   ============================================================ */
+function checkResume(){
+  const raw = safeGet(STORAGE_KEY);
+  if (!raw) return;
+  let data;
+  try { data = JSON.parse(raw); } catch (e) { safeRemove(STORAGE_KEY); return; }
+
+  const dayIdx = PLAN.days.findIndex(d => d.date === data.date);
+  if (dayIdx === -1){ safeRemove(STORAGE_KEY); return; }
+
+  selectedDayIndex = dayIdx;
+  const {wd, dm} = formatDayLabel(data.date);
+  document.getElementById("resume-text").textContent =
+    `Je hebt een sessie van ${wd} ${dm} die niet is afgerond. Doorgaan waar je gebleven was, of opnieuw beginnen?`;
+  document.getElementById("resume-overlay").hidden = false;
+
+  document.getElementById("btn-resume").onclick = () => {
+    document.getElementById("resume-overlay").hidden = true;
+    renderOverview();
+    startGuided(data);
+  };
+  document.getElementById("btn-restart").onclick = () => {
+    safeRemove(STORAGE_KEY);
+    document.getElementById("resume-overlay").hidden = true;
+    renderOverview();
+  };
+}
+
+/* ============================================================
+   Wake Lock, met nette terugval
+   ============================================================ */
+async function requestWakeLock(){
+  try {
+    if ("wakeLock" in navigator){
+      wakeLock = await navigator.wakeLock.request("screen");
+    } else {
+      document.getElementById("wakelock-hint").hidden = false;
+    }
+  } catch (e) {
+    document.getElementById("wakelock-hint").hidden = false;
+  }
+}
+function releaseWakeLock(){
+  if (wakeLock){ wakeLock.release().catch(() => {}); wakeLock = null; }
+}
+document.addEventListener("visibilitychange", async () => {
+  if (document.visibilityState === "visible" && session && !document.getElementById("view-guided").hidden){
+    try {
+      if ("wakeLock" in navigator) wakeLock = await navigator.wakeLock.request("screen");
+    } catch (e) { /* geen probleem, gewoon negeren */ }
+  }
+});
+
+/* ============================================================
+   Init
+   ============================================================ */
+async function init(){
+  PLAN = await loadPlan();
+  document.getElementById("fallback-banner").hidden = !usedFallbackPlan;
+  selectedDayIndex = 0;
+  const todayStr = (() => {
+    const t = new Date();
+    return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
+  })();
+  const todayIdx = PLAN.days.findIndex(d => d.date === todayStr);
+  if (todayIdx !== -1) selectedDayIndex = todayIdx;
+
+  renderOverview();
+  checkResume();
+
+  document.getElementById("btn-start").addEventListener("click", () => startGuided(null));
+  document.getElementById("btn-exit").addEventListener("click", exitGuided);
+  document.getElementById("btn-back").addEventListener("click", goBack);
+  document.getElementById("btn-pause").addEventListener("click", togglePause);
+  document.getElementById("btn-skip").addEventListener("click", () => advance(false));
+  document.getElementById("btn-set-done").addEventListener("click", () => advance(true));
+  document.getElementById("btn-finish-ok").addEventListener("click", () => {
+    document.getElementById("view-finish").hidden = true;
+    document.querySelector(".start-bar").hidden = false;
+    document.getElementById("view-overview").hidden = false;
+    renderOverview();
+  });
+
+  if ("serviceWorker" in navigator){
+    try { await navigator.serviceWorker.register("./sw.js"); } catch (e) { /* offline-cache niet kritiek, negeren */ }
+  }
+}
+
+init();
+</script>
+</body>
+</html>

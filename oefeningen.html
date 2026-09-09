@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calisthenics oefeningen — uitvoering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E8EBEE;
+    --card:#FFFFFF;
+    --ink:#141C24;
+    --ink-soft:#4C5967;
+    --ink-faint:#8A96A3;
+    --rule:#D2D8DE;
+    --accent:#0F6E63;
+    --g-warmup:#7A6BB5;
+    --g-push:#C0562F;
+    --g-legs:#1F6FA8;
+    --g-core:#0F6E63;
+    --g-cardio:#A8482E;
+    --focus:#0F6E63;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;
+      --card:#18222C;
+      --ink:#E7ECF1;
+      --ink-soft:#A6B3C0;
+      --ink-faint:#6D7C8A;
+      --rule:#26333F;
+      --accent:#4FC8B6;
+      --g-warmup:#A99BE0;
+      --g-push:#E8845A;
+      --g-legs:#5DAEE0;
+      --g-core:#4FC8B6;
+      --g-cardio:#E08A6E;
+      --focus:#4FC8B6;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820; --card:#18222C; --ink:#E7ECF1; --ink-soft:#A6B3C0;
+    --ink-faint:#6D7C8A; --rule:#26333F; --accent:#4FC8B6;
+    --g-warmup:#A99BE0; --g-push:#E8845A; --g-legs:#5DAEE0;
+    --g-core:#4FC8B6; --g-cardio:#E08A6E; --focus:#4FC8B6;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px; line-height:1.5;
+  }
+  .wrap{max-width:46rem;margin:0 auto;padding:2rem 1.1rem 4rem}
+
+  header h1{
+    font-family:"Barlow Semi Condensed",system-ui,sans-serif;
+    font-weight:600; font-size:clamp(2rem,7vw,2.9rem);
+    line-height:1.05; letter-spacing:-.015em; margin:0 0 .5rem;
+  }
+  header p{margin:0;color:var(--ink-soft);max-width:34rem}
+  header a{color:var(--accent)}
+
+  .controls{
+    position:sticky; top:0; z-index:5; margin:1.6rem 0 0;
+    padding:.75rem 0 .6rem; background:var(--paper);
+    border-bottom:1px solid var(--rule);
+  }
+  input[type=search]{
+    width:100%; padding:.7rem .85rem; font:inherit; color:var(--ink);
+    background:var(--card); border:1px solid var(--rule); border-radius:.4rem;
+  }
+  input[type=search]:focus-visible,button:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+  .chip{
+    font:inherit; font-size:.9rem; cursor:pointer;
+    padding:.3rem .7rem; border-radius:2rem;
+    background:transparent; color:var(--ink-soft);
+    border:1px solid var(--rule);
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--ink); color:var(--paper); border-color:var(--ink);
+  }
+
+  section{margin-top:2.2rem}
+  section h2{
+    font-family:"Barlow Semi Condensed",system-ui,sans-serif;
+    font-weight:600; font-size:1.35rem; margin:0 0 .15rem;
+    display:flex; align-items:baseline; gap:.55rem;
+  }
+  section h2::before{
+    content:""; width:.55rem; height:.55rem; border-radius:50%;
+    background:var(--dot); flex:none; transform:translateY(-.1em);
+  }
+  section .lead{margin:0 0 .9rem;color:var(--ink-faint);font-size:.95rem}
+
+  ul{list-style:none;margin:0;padding:0}
+  li{
+    background:var(--card); border-left:3px solid var(--dot);
+    padding:.8rem .95rem; margin-bottom:.4rem; border-radius:0 .3rem .3rem 0;
+  }
+  li h3{
+    font-family:"Barlow Semi Condensed",system-ui,sans-serif;
+    font-weight:600; font-size:1.08rem; margin:0 0 .15rem;
+  }
+  li p{margin:0;color:var(--ink-soft);font-size:.98rem}
+  li .key{display:block;margin-top:.3rem;font-size:.78rem;color:var(--ink-faint)}
+
+  .empty{padding:2rem 0;color:var(--ink-faint)}
+  [hidden]{display:none !important}
+  footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);
+    color:var(--ink-faint);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Hoe voer je ze uit</h1>
+  <p>De 46 oefeningen uit je Garmin-script, in gewoon Nederlands. Op je epix zie je van elke oefening ook een animatie: blader vóór het starten door de stappen en druk op START.</p>
+</header>
+
+<div class="controls">
+  <input type="search" id="q" placeholder="Zoek een oefening, bijvoorbeeld Air Squat" aria-label="Zoek een oefening">
+  <div class="chips" id="chips" role="group" aria-label="Filter op spiergroep"></div>
+</div>
+
+<div id="list"></div>
+<p class="empty" id="empty" hidden>Niets gevonden. Probeer een deel van de naam.</p>
+
+<footer>Namen staan in het Engels omdat je horloge ze zo toont. De code tussen haakjes is de sleutel die het script naar Garmin stuurt.</footer>
+
+</div>
+
+<script>
+const DATA = [
+ {g:"warmup", n:"Walking High Knees", k:"WARM_UP/WALKING_HIGH_KNEES",
+  d:"Loop op de plaats en trek je knieën beurtelings tot heuphoogte op. Armen bewegen tegengesteld mee, landing zacht op de voorvoet."},
+ {g:"warmup", n:"Jumping Jacks", k:"CARDIO/JUMPING_JACKS",
+  d:"Spring met je benen naar buiten terwijl je armen langs je oren omhoog gaan, en spring terug naar stand met armen langs je lichaam."},
+ {g:"warmup", n:"Arm Circles", k:"WARM_UP/ARM_CIRCLES",
+  d:"Armen gestrekt zijwaarts, draai rustige cirkels die steeds groter worden. Halverwege draai je de richting om."},
+ {g:"warmup", n:"Walkout", k:"WARM_UP/WALKOUT",
+  d:"Buig vanuit staand voorover tot je handen de grond raken, loop met je handen vooruit naar plank en weer terug. Benen blijven zo gestrekt mogelijk."},
+ {g:"warmup", n:"Cat Camel", k:"WARM_UP/CAT_CAMEL",
+  d:"Op handen en knieën. Duw je rug bol omhoog en laat hem daarna hol zakken, in een rustig ritme op je ademhaling."},
+ {g:"warmup", n:"Groiners", k:"WARM_UP/GROINERS",
+  d:"Vanuit plank stap je één voet naast je hand en laat je je heup laag zakken. Terug naar plank en wissel van been."},
+
+ {g:"push", n:"Push-up", k:"PUSH_UP/PUSH_UP",
+  d:"Handen iets breder dan je schouders, lichaam in één rechte lijn van hoofd tot hielen. Zak tot je borst vlak boven de grond is en duw terug."},
+ {g:"push", n:"Wide-hands Push-up", k:"PUSH_UP/WIDE_HANDS_PUSH_UP",
+  d:"Dezelfde beweging met je handen duidelijk breder dan schouderbreedte. Dat legt meer nadruk op je borst en minder op je triceps."},
+ {g:"push", n:"Diamond Push-up", k:"PUSH_UP/DIAMOND_PUSH_UP",
+  d:"Handen onder je borst met duimen en wijsvingers tegen elkaar, zodat er een ruit ontstaat. Ellebogen blijven dicht langs je lichaam. Zwaar op de triceps."},
+ {g:"push", n:"Incline Push-up", k:"PUSH_UP/INCLINE_PUSH_UP",
+  d:"Handen op een verhoging zoals een bank, tafelrand of trede. Hoe hoger de verhoging, hoe lichter de oefening."},
+ {g:"push", n:"Pike Push-up", k:"PUSH_UP/PIKE_PUSH_UP",
+  d:"Vanuit plank je heupen hoog optrekken tot een omgekeerde V. Zak met je kruin richting de grond en duw terug. Traint vooral je schouders."},
+ {g:"push", n:"Shoulder Tapping Push-up", k:"PUSH_UP/SHOULDER_TAPPING_PUSH_UP",
+  d:"Na elke push-up tik je met je hand je tegenoverliggende schouder aan. Je heupen mogen daarbij niet meedraaien."},
+ {g:"push", n:"Spiderman Push-up", k:"PUSH_UP/SPIDERMAN_PUSH_UP",
+  d:"Terwijl je zakt trek je één knie zijwaarts naar je elleboog aan dezelfde kant. Bij het omhoog duwen zet je de voet weer terug."},
+ {g:"push", n:"Hand Release Push-up", k:"PUSH_UP/HAND_RELEASE_PUSH_UP",
+  d:"Zak helemaal tot de grond en til je handen even los. Daarna weer plaatsen en omhoog duwen. Geen zwaai, elke herhaling begint vanaf nul."},
+ {g:"push", n:"T Push-up", k:"PUSH_UP/T_PUSH_UP",
+  d:"Na elke push-up draai je door naar zijsteun met één arm recht omhoog, zodat je lichaam een T vormt. Afwisselend links en rechts."},
+ {g:"push", n:"Bench Dip", k:"TRICEPS_EXTENSION/BENCH_DIP",
+  d:"Zit op de rand van een bank of stoel, handen naast je heupen, voeten vooruit. Laat je zakken door je ellebogen naar achteren te buigen en duw terug."},
+
+ {g:"legs", n:"Air Squat", k:"SQUAT/AIR_SQUAT",
+  d:"De gewone squat zonder gewicht. Voeten schouderbreed, tenen licht naar buiten. Duw je heupen naar achteren en zak tot je dijen ongeveer horizontaal zijn. Borst omhoog, knieën in lijn met je tenen, hielen blijven op de grond."},
+ {g:"legs", n:"Prisoner Squat", k:"SQUAT/PRISONER_SQUAT",
+  d:"Dezelfde squat, maar met je handen achter je hoofd en je ellebogen wijd. Dwingt je romp rechtop te blijven."},
+ {g:"legs", n:"Sumo Squat", k:"SQUAT/SUMO_SQUAT",
+  d:"Brede stand met je tenen duidelijk naar buiten. Zak recht omlaag tussen je voeten. Meer nadruk op je binnenbenen en bilspieren."},
+ {g:"legs", n:"Body-weight Wall Squat", k:"SQUAT/BODY_WEIGHT_WALL_SQUAT",
+  d:"Rug plat tegen de muur, voeten een stap naar voren, zak tot je knieën in een hoek van 90 graden staan. Vasthouden, niet bewegen."},
+ {g:"legs", n:"Squat Jumps In N' Out", k:"SQUAT/SQUAT_JUMPS_IN_N_OUT",
+  d:"Blijf laag in de squat en spring je voeten afwisselend breed en smal. Je romp blijft op dezelfde hoogte."},
+ {g:"legs", n:"Lunge", k:"LUNGE/LUNGE",
+  d:"Stap één been naar voren en laat je achterste knie richting de grond zakken tot beide knieën ongeveer 90 graden zijn. Duw terug naar stand en wissel."},
+ {g:"legs", n:"Walking Lunge", k:"LUNGE/WALKING_LUNGE",
+  d:"Dezelfde uitval, maar je loopt vooruit: uit de lunge stap je meteen door met het andere been."},
+ {g:"legs", n:"Side Lunge", k:"LUNGE/SIDE_LUNGE",
+  d:"Stap ver zijwaarts, buig die knie en duw je heupen naar achteren terwijl het andere been gestrekt blijft. Beide voeten blijven recht vooruit wijzen."},
+ {g:"legs", n:"Curtsy Lunge", k:"LUNGE/CURTSY_LUNGE",
+  d:"Stap één been kruislings achter het andere, als een reverence, en zak omlaag. Traint de zijkant van je bil."},
+ {g:"legs", n:"Hip Raise", k:"HIP_RAISE/HIP_RAISE",
+  d:"Op je rug, voeten plat en dicht bij je billen. Duw je heupen omhoog tot je knieën, heupen en schouders één lijn vormen. Knijp je billen aan bovenin."},
+ {g:"legs", n:"Single-leg Hip Raise", k:"HIP_RAISE/SINGLE_LEG_HIP_RAISE",
+  d:"Zelfde beweging op één voet, met het andere been gestrekt omhoog. Je heupen blijven horizontaal."},
+ {g:"legs", n:"Marching Hip Raise", k:"HIP_RAISE/MARCHING_HIP_RAISE",
+  d:"Houd je heupen omhoog in de bruggetjespositie en trek afwisselend één knie naar je borst, zonder te zakken of te kantelen."},
+ {g:"legs", n:"Calf Raise", k:"CALF_RAISE/CALF_RAISE",
+  d:"Kom staand zo hoog mogelijk op je tenen en laat je hielen daarna langzaam zakken. Op een tree kun je dieper uitzakken."},
+
+ {g:"core", n:"Plank", k:"PLANK/PLANK",
+  d:"Steun op je onderarmen en tenen, ellebogen onder je schouders. Lichaam in één rechte lijn, buik en billen aangespannen, heupen niet laten zakken."},
+ {g:"core", n:"Side Plank", k:"PLANK/SIDE_PLANK",
+  d:"Zijsteun op één onderarm en de zijkant van je voeten. Duw je heup omhoog tot je lichaam recht is en houd vast. Beide kanten doen."},
+ {g:"core", n:"Mountain Climber", k:"PLANK/MOUNTAIN_CLIMBER",
+  d:"Vanuit hoge plank trek je je knieën snel en afwisselend naar je borst. Je schouders blijven boven je handen, je heupen laag."},
+ {g:"core", n:"Bear Crawl", k:"PLANK/BEAR_CRAWL",
+  d:"Op handen en tenen met je knieën een paar centimeter boven de grond. Kruip kruislings vooruit: rechterhand met linkervoet mee."},
+ {g:"core", n:"Plank with Knee-to-Elbow", k:"PLANK/PLANK_WITH_KNEE_TO_ELBOW",
+  d:"Vanuit plank breng je één knie langs de buitenkant naar de elleboog aan dezelfde kant. Rustig terug en wisselen."},
+ {g:"core", n:"Plank with Leg Lift", k:"PLANK/PLANK_WITH_LEG_LIFT",
+  d:"Houd de plank vast en til om beurten één gestrekt been een handbreedte op. Je heupen mogen niet meedraaien."},
+ {g:"core", n:"Bicycle Crunch", k:"CRUNCH/BICYCLE_CRUNCH",
+  d:"Op je rug, handen bij je slapen. Breng je elleboog naar de tegenoverliggende knie terwijl het andere been strekt, en fiets rustig door."},
+ {g:"core", n:"Flutter Kicks", k:"CRUNCH/FLUTTER_KICKS",
+  d:"Op je rug, benen gestrekt net boven de grond, onderrug tegen de mat. Maak kleine, snelle schaarbewegingen omhoog en omlaag."},
+ {g:"core", n:"Hollow Rock", k:"CRUNCH/HOLLOW_ROCK",
+  d:"Op je rug, armen en benen gestrekt opgetild zodat je lichaam een ondiepe boot vormt. Schommel als geheel heen en weer zonder te knikken."},
+ {g:"core", n:"Sit-up", k:"SIT_UP/SIT_UP",
+  d:"Op je rug met gebogen knieën. Kom helemaal omhoog tot zit en laat je gecontroleerd terugzakken, wervel voor wervel."},
+ {g:"core", n:"V-up", k:"SIT_UP/V_UP",
+  d:"Vanuit gestrekt liggen breng je armen en benen tegelijk omhoog tot ze elkaar boven je heupen raken, zodat je lichaam een V vormt."},
+ {g:"core", n:"Russian Twist", k:"CORE/RUSSIAN_TWIST",
+  d:"Zit met opgetrokken knieën en je romp achterover geleund. Draai je bovenlichaam afwisselend naar links en rechts. Voeten los is zwaarder."},
+ {g:"core", n:"Leg Raise", k:"LEG_RAISE/LEG_RAISE",
+  d:"Op je rug met gestrekte benen. Til ze samen omhoog tot ongeveer loodrecht en laat ze langzaam zakken zonder de grond te raken."},
+ {g:"core", n:"Superman from Floor", k:"HYPEREXTENSION/SUPERMAN_FROM_FLOOR",
+  d:"Op je buik, armen vooruit gestrekt. Til armen, borst en benen tegelijk een stukje op, houd kort vast en laat rustig zakken."},
+
+ {g:"cardio", n:"Burpee", k:"TOTAL_BODY/BURPEE",
+  d:"Vanuit staand handen op de grond, voeten naar achteren in plank, eventueel een push-up, voeten terug naar je handen en omhoog springen."},
+ {g:"cardio", n:"Squat Jacks", k:"CARDIO/SQUAT_JACKS",
+  d:"Blijf laag in de squat en spring je voeten in en uit, terwijl je romp op dezelfde hoogte blijft."},
+ {g:"cardio", n:"Split Jacks", k:"CARDIO/SPLIT_JACKS",
+  d:"Springend wissel je van schaarstand: het ene been voor, het andere achter, armen tegengesteld mee."},
+ {g:"cardio", n:"Plank Pike Jumps", k:"PLANK/PLANK_PIKE_JUMPS",
+  d:"Vanuit hoge plank spring je beide voeten naar voren terwijl je heupen omhoog komen, en spring je weer terug naar plank."}
+];
+
+const GROUPS = [
+  {id:"warmup", label:"Warming-up", lead:"Kort en rustig, om je lichaam op temperatuur te brengen.", dot:"var(--g-warmup)"},
+  {id:"push",   label:"Duwen",      lead:"Borst, schouders en triceps.", dot:"var(--g-push)"},
+  {id:"legs",   label:"Benen",      lead:"Bovenbenen, bilspieren en kuiten.", dot:"var(--g-legs)"},
+  {id:"core",   label:"Romp",       lead:"Buik, zij en onderrug.", dot:"var(--g-core)"},
+  {id:"cardio", label:"Cardio",     lead:"Explosief en met een hoge hartslag.", dot:"var(--g-cardio)"}
+];
+
+const list = document.getElementById("list");
+const chipBox = document.getElementById("chips");
+const q = document.getElementById("q");
+const empty = document.getElementById("empty");
+let active = "all";
+
+GROUPS.forEach(g=>{
+  const s = document.createElement("section");
+  s.dataset.group = g.id;
+  s.style.setProperty("--dot", g.dot);
+  const items = DATA.filter(d=>d.g===g.id).map(d=>`
+    <li data-name="${d.n.toLowerCase()}">
+      <h3>${d.n}</h3>
+      <p>${d.d}</p>
+      <span class="key">${d.k}</span>
+    </li>`).join("");
+  s.innerHTML = `<h2>${g.label}</h2><p class="lead">${g.lead}</p><ul>${items}</ul>`;
+  list.appendChild(s);
+});
+
+[{id:"all",label:"Alles"}, ...GROUPS].forEach(g=>{
+  const b = document.createElement("button");
+  b.className = "chip";
+  b.type = "button";
+  b.textContent = g.label;
+  b.dataset.filter = g.id;
+  b.setAttribute("aria-pressed", g.id==="all" ? "true" : "false");
+  b.addEventListener("click", ()=>{ active = g.id; render(); });
+  chipBox.appendChild(b);
+});
+
+function render(){
+  const term = q.value.trim().toLowerCase();
+  let shown = 0;
+  chipBox.querySelectorAll(".chip").forEach(c=>
+    c.setAttribute("aria-pressed", c.dataset.filter===active ? "true":"false"));
+
+  list.querySelectorAll("section").forEach(sec=>{
+    const groupOk = active==="all" || sec.dataset.group===active;
+    let visible = 0;
+    sec.querySelectorAll("li").forEach(li=>{
+      const match = groupOk && (!term || li.dataset.name.includes(term)
+        || li.textContent.toLowerCase().includes(term));
+      li.hidden = !match;
+      if(match) visible++;
+    });
+    sec.hidden = visible===0;
+    shown += visible;
+  });
+  empty.hidden = shown>0;
+}
+
+q.addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
